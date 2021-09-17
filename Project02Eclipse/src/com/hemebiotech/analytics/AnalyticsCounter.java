@@ -7,13 +7,15 @@ import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	public static void main(String args[]) throws Exception {
-// Lecture des symptoms
+// Lecture des symptomes
 		ReadSymptomDataFromFile readSymptoms = new ReadSymptomDataFromFile("symptoms.txt");
 		List<String> listSymptoms = readSymptoms.getSymptoms();
 		System.out.println(listSymptoms);
 
 		AnalyticsCounter counterSymptom = new AnalyticsCounter();
 		TreeMap<String, Integer> contentSymptoms = counterSymptom.countSymptom(listSymptoms);
+
+		writeSymptom(contentSymptoms);
 	}
 
 	public TreeMap<String, Integer> countSymptom(List<String> listSymptoms) {
@@ -33,17 +35,20 @@ public class AnalyticsCounter {
 		return contentSymptoms;
 	}
 
-	public void writeSymptom(TreeMap<String, Integer> contentSymptoms) throws IOException {
+	public static void writeSymptom(TreeMap<String, Integer> contentSymptoms) throws IOException {
 		FileWriter writer = new FileWriter ("result.out");
 
 			//Transmission symptoms dans .out
 		contentSymptoms.entrySet().forEach(roadSymptoms -> {
-			System.out.println(roadSymptoms.getKey()
-					+ " | " + roadSymptoms.getValue());
 			try {
-				writer.write(String.valueOf(contentSymptoms));
+				writer.write(roadSymptoms.getKey()
+						   + " | " + roadSymptoms.getValue());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			System.out.println(roadSymptoms);
+
 		});
 }}
+
+
