@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
+	private final String filepath;
 	
 	/**
-	 * 
-	 * @param filepath un chemin de fichier avec des symptômes
+	 * Un chemin de fichier avec des symptômes ne pouvant être modifié dans le code
+	 * @param filepath
 	 */
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
@@ -24,8 +24,9 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	
 	@Override
 	public List<String> getSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
-		
+		ArrayList<String> result;
+		result = new ArrayList<>();
+
 		if (filepath != null) {
 			try {
 				BufferedReader reader = new BufferedReader (new FileReader(filepath));
