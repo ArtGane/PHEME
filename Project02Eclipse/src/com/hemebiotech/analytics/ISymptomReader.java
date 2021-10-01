@@ -8,5 +8,5 @@ public interface ISymptomReader {
 	 * une liste de tous les symptômes obtenus à partir du fichier symptoms.txt, sans prendre en compte les doublons éventuels
 	 * @return List<String>
 	 */
-	List<String> getSymptoms ();
+	List<String> getSymptoms();
 }
